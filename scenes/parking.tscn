@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://c3umccqlkc12c"]
+[gd_scene load_steps=37 format=3 uid="uid://c3umccqlkc12c"]
 
 [ext_resource type="Script" path="res://scripts/car.gd" id="1_hpxx8"]
 [ext_resource type="ArrayMesh" uid="uid://bqao2y3peoq04" path="res://models/car_body.res" id="2_8sdff"]
 [ext_resource type="Material" uid="uid://cv4pa0euobloi" path="res://materials/car_bumpers.tres" id="2_tkou0"]
 [ext_resource type="Material" uid="uid://bdkyrwviekj1g" path="res://materials/car_body_blue.tres" id="3_71h60"]
 [ext_resource type="ArrayMesh" uid="uid://bf5ccbdnpbm1m" path="res://models/car_wheel.res" id="3_mfi84"]
+[ext_resource type="Material" uid="uid://ck3w4wdx25qyt" path="res://materials/car_body_red.tres" id="5_31euc"]
 [ext_resource type="Texture2D" uid="uid://dnwshxq7t0wa2" path="res://textures/track.png" id="5_dwgpm"]
 [ext_resource type="Material" uid="uid://bodesq5yc4mbp" path="res://materials/car_body_gray.tres" id="5_sohjt"]
 [ext_resource type="Material" uid="uid://10l3n7gcme3j" path="res://materials/car_body_green.tres" id="7_1f8gb"]
@@ -12,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://2y403fqonr8o" path="res://sounds/crash.wav" id="7_gsd1l"]
 [ext_resource type="Material" uid="uid://bkf0opy2wabat" path="res://materials/car_body_white.tres" id="7_vgy7r"]
 [ext_resource type="AudioStream" uid="uid://bvo5go71hg5ik" path="res://sounds/engine.wav" id="8_nh84a"]
+[ext_resource type="Script" path="res://scripts/obstacle_car.gd" id="9_8e11u"]
 [ext_resource type="Material" uid="uid://bls1bws84mcbr" path="res://materials/wheel_metal.tres" id="12_miivj"]
 [ext_resource type="Material" uid="uid://dj7nv8b1mx1lv" path="res://materials/car_body_tan.tres" id="12_tormo"]
 
@@ -24,6 +26,7 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/70/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/120/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/100/0 = Vector2(0, 0)
 cache/0/70/0/ascent = 0.0
 cache/0/70/0/descent = 0.0
 cache/0/70/0/underline_position = 0.0
@@ -32,6 +35,7 @@ cache/0/70/0/scale = 1.0
 cache/0/70/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/70/0/kerning_overrides/70/0 = Vector2(0, 0)
 cache/0/70/0/kerning_overrides/120/0 = Vector2(0, 0)
+cache/0/70/0/kerning_overrides/100/0 = Vector2(0, 0)
 cache/0/120/0/ascent = 0.0
 cache/0/120/0/descent = 0.0
 cache/0/120/0/underline_position = 0.0
@@ -40,15 +44,26 @@ cache/0/120/0/scale = 1.0
 cache/0/120/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/120/0/kerning_overrides/70/0 = Vector2(0, 0)
 cache/0/120/0/kerning_overrides/120/0 = Vector2(0, 0)
+cache/0/120/0/kerning_overrides/100/0 = Vector2(0, 0)
+cache/0/100/0/ascent = 0.0
+cache/0/100/0/descent = 0.0
+cache/0/100/0/underline_position = 0.0
+cache/0/100/0/underline_thickness = 0.0
+cache/0/100/0/scale = 1.0
+cache/0/100/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/100/0/kerning_overrides/70/0 = Vector2(0, 0)
+cache/0/100/0/kerning_overrides/120/0 = Vector2(0, 0)
+cache/0/100/0/kerning_overrides/100/0 = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3im3o"]
 font = SubResource("FontFile_lxup0")
-font_size = 120
+font_size = 100
+font_color = Color(1, 0, 0, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_q14kv"]
-font_size = 54
+font_size = 45
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -84,6 +99,7 @@ data = PackedVector3Array(-1.5, 0.25, 2.5, 1.5, 0.25, 2.5, -1.5, -0.25, 2.5, 1.5
 points = PackedVector3Array(0.965434, 0.121574, -2.01977, 0.932358, 0.556089, -1.86685, 0.932358, 0.634299, -1.1173, 0.932358, 0.639683, -0.636438, 0.932358, 0.639683, 0.714095, 0.932358, 0.634299, 1.0219, 0.95296, 0.125196, 1.4755, 0.95296, 2.23517e-08, 1.47945, 0.965434, 2.23517e-08, -2.04308, 0.835021, 0.13332, -2.22721, 0.812529, 0.609828, -2.0984, 0.746945, 1, -0.56176, 0.746945, 1, 0.628353, 0.932358, 0.572631, 1.3862, 0.812529, 0.62637, 1.56401, 0.826516, 0.136942, 1.59483, 0.826516, 2.23517e-08, 1.58218, 0.835021, 2.23517e-08, -2.2438, 0.467786, 0.13332, -2.34574, 0.474779, 0.609828, -2.21693, 0.474779, 1, -0.632882, 0.474779, 1, 0.708959, 0.474779, 0.62637, 1.64382, 0.470432, 0.136942, 1.67464, 0.470432, 2.23517e-08, 1.662, 0.467786, 2.23517e-08, -2.36194, -0.467975, 0.13332, -2.34574, -0.474968, 0.609828, -2.21693, -0.474968, 1, -0.632882, -0.474968, 1, 0.708959, -0.474968, 0.62637, 1.64382, -0.470621, 0.136942, 1.67464, -0.470621, 2.23517e-08, 1.662, -0.467975, 2.23517e-08, -2.36194, -0.83521, 2.23517e-08, -2.2438, -0.83521, 0.13332, -2.22721, -0.812719, 0.609828, -2.0984, -0.747134, 1, -0.56176, -0.747134, 1, 0.628353, -0.812719, 0.62637, 1.56401, -0.826705, 0.136942, 1.59483, -0.826705, 2.23517e-08, 1.58218, -0.965434, 2.23517e-08, -2.04308, -0.965434, 0.121574, -2.01977, -0.932547, 0.556089, -1.86685, -0.932547, 0.634299, -1.1173, -0.932547, 0.639683, -0.636438, -0.932547, 0.639683, 0.714095, -0.932547, 0.634299, 1.0219, -0.932547, 0.572631, 1.3862, -0.953149, 0.125196, 1.4755, -0.953149, 2.23517e-08, 1.47945)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bt6dq"]
+sky_energy_multiplier = 2.0
 ground_bottom_color = Color(0.211765, 0.509804, 0.403922, 1)
 ground_horizon_color = Color(0.294118, 0.341176, 0.4, 1)
 
@@ -93,7 +109,8 @@ sky_material = SubResource("ProceduralSkyMaterial_bt6dq")
 [sub_resource type="Environment" id="Environment_j1s37"]
 sky = SubResource("Sky_y0orv")
 ambient_light_source = 3
-ambient_light_energy = 4.0
+ambient_light_color = Color(0.298039, 0.301961, 0.301961, 1)
+ambient_light_energy = 6.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_aovb8"]
 size = Vector3(1, 2, 75)
@@ -140,6 +157,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Car Crash!"
 label_settings = SubResource("LabelSettings_3im3o")
+horizontal_alignment = 1
 
 [node name="RestartLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -156,6 +174,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press [R] to try again"
 label_settings = SubResource("LabelSettings_q14kv")
+horizontal_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -205,7 +224,8 @@ grow_horizontal = 0
 text = "Controls:
 Arrows (Move)
 Space (Brake)
-R (Restart)"
+R (Restart)
+C (Camera)"
 label_settings = SubResource("LabelSettings_jpxwi")
 horizontal_alignment = 2
 
@@ -232,31 +252,22 @@ transform = Transform3D(1, 0, 0, 0, 1, -5.55883e-09, 0, -5.84987e-09, 1, 0, 0, 0
 shape = SubResource("ConcavePolygonShape3D_1eaoi")
 
 [node name="PlayerCar" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.437665, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.374409, 15.7486)
 mass = 400.0
 continuous_cd = true
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_hpxx8")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/PlayerCar"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/PlayerCar"]
 mesh = ExtResource("2_8sdff")
-surface_material_override/0 = ExtResource("3_71h60")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/PlayerCar"]
-mesh = ExtResource("2_8sdff")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D/PlayerCar"]
-mesh = ExtResource("2_8sdff")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D/PlayerCar"]
-mesh = ExtResource("2_8sdff")
+surface_material_override/0 = ExtResource("5_31euc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/PlayerCar"]
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/PlayerCar"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -266,7 +277,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/PlayerCar"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -275,7 +286,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/PlayerCar"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -285,7 +296,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/PlayerCar"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -301,11 +312,24 @@ stream = ExtResource("8_nh84a")
 pitch_scale = 1.79
 autoplay = true
 
-[node name="ObstacleCar1" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -4.8827, 0.437665, -12.5676)
-mass = 50.0
+[node name="CameraCar" type="Camera3D" parent="Node3D/PlayerCar"]
+transform = Transform3D(1, 0, 0, 0, 0.694796, 0.719207, 0, -0.719207, 0.694796, 0, 10.0166, 9.62604)
+environment = SubResource("Environment_j1s37")
+fov = 30.0
+size = 18.619
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar1"]
+[node name="CameraCar2" type="Camera3D" parent="Node3D/PlayerCar"]
+transform = Transform3D(1, 0, 0, 0, 0.998581, -0.0532597, 0, 0.0532597, 0.998581, -0.389893, 0.881032, -0.216264)
+environment = SubResource("Environment_j1s37")
+fov = 30.0
+size = 18.619
+
+[node name="ObstacleCar1" type="VehicleBody3D" parent="Node3D"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -4.8827, 0.374409, -12.5676)
+mass = 50.0
+script = ExtResource("9_8e11u")
+
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar1"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("5_sohjt")
 
@@ -313,7 +337,7 @@ surface_material_override/0 = ExtResource("5_sohjt")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -321,18 +345,20 @@ wheel_radius = 0.35
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar1/FrontLeftWheel"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = ExtResource("3_mfi84")
+surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar1/FrontRightWheel"]
 mesh = ExtResource("3_mfi84")
+surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -340,29 +366,32 @@ wheel_radius = 0.35
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar1/BackLeftWheel"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = ExtResource("3_mfi84")
+surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar1/BackRightWheel"]
 mesh = ExtResource("3_mfi84")
+surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="ObstacleCar12" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -4.8827, 0.437665, -17.2088)
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -4.883, 0.374, -17.209)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar12"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar12"]
 mesh = ExtResource("2_8sdff")
-surface_material_override/0 = ExtResource("5_sohjt")
+surface_material_override/0 = ExtResource("12_tormo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/ObstacleCar12"]
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar12"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -372,7 +401,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar12"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -381,7 +410,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar12"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -391,7 +420,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar12"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -400,10 +429,11 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="ObstacleCar2" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8827, 0.437665, -3.83312)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8827, 0.374409, -3.53881)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar2"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar2"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("7_vgy7r")
 
@@ -411,7 +441,7 @@ surface_material_override/0 = ExtResource("7_vgy7r")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.062, -1.446)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -421,7 +451,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.062, -1.446)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -430,7 +460,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.062, 0.878)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -440,7 +470,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.062, 0.878)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -449,10 +479,11 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="ObstacleCar9" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8827, 0.437665, 0.885903)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8827, 0.374409, 1.10468)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar9"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar9"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("7_3ru8l")
 
@@ -460,7 +491,7 @@ surface_material_override/0 = ExtResource("7_3ru8l")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar9"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -470,7 +501,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar9"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -479,7 +510,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar9"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -489,7 +520,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar9"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -498,10 +529,11 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="ObstacleCar10" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8827, 0.437665, 5.60905)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8827, 0.374409, 5.60905)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar10"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar10"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("12_tormo")
 
@@ -509,7 +541,7 @@ surface_material_override/0 = ExtResource("12_tormo")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar10"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -520,7 +552,7 @@ mesh = ExtResource("3_mfi84")
 surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar10"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -530,7 +562,7 @@ mesh = ExtResource("3_mfi84")
 surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar10"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -541,7 +573,7 @@ mesh = ExtResource("3_mfi84")
 surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar10"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -551,10 +583,11 @@ mesh = ExtResource("3_mfi84")
 surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="ObstacleCar11" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8827, 0.437665, 17.8053)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.8827, 0.374409, 17.8053)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar11"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar11"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("7_1f8gb")
 
@@ -562,7 +595,7 @@ surface_material_override/0 = ExtResource("7_1f8gb")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar11"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -573,7 +606,7 @@ mesh = ExtResource("3_mfi84")
 surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar11"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -583,7 +616,7 @@ mesh = ExtResource("3_mfi84")
 surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar11"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -594,7 +627,7 @@ mesh = ExtResource("3_mfi84")
 surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar11"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -604,10 +637,11 @@ mesh = ExtResource("3_mfi84")
 surface_material_override/1 = ExtResource("12_miivj")
 
 [node name="ObstacleCar3" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.437665, -16.7781)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.374409, -16.7781)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar3"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar3"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("5_sohjt")
 
@@ -615,7 +649,7 @@ surface_material_override/0 = ExtResource("5_sohjt")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar3"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -625,7 +659,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar3"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -634,7 +668,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar3"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -644,7 +678,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar3"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -653,10 +687,11 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="ObstacleCar4" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.437665, -5.96635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.374409, -5.96635)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar4"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar4"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("3_71h60")
 
@@ -664,7 +699,7 @@ surface_material_override/0 = ExtResource("3_71h60")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar4"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -674,7 +709,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar4"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -683,7 +718,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar4"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -693,7 +728,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar4"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -702,10 +737,11 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="ObstacleCar5" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.437665, 8.53455)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.374409, 8.53455)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar5"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar5"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("7_vgy7r")
 
@@ -713,7 +749,7 @@ surface_material_override/0 = ExtResource("7_vgy7r")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar5"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -723,7 +759,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar5"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.062, -1.446)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -732,7 +768,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar5"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -742,7 +778,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar5"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -751,18 +787,19 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="ObstacleCar7" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.437665, 3.90051)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.374409, 3.90051)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar7"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar7"]
 mesh = ExtResource("2_8sdff")
-surface_material_override/0 = ExtResource("5_sohjt")
+surface_material_override/0 = ExtResource("7_1f8gb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/ObstacleCar7"]
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar7"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -772,7 +809,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar7"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -781,7 +818,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar7"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -791,7 +828,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar7"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -800,10 +837,11 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="ObstacleCar8" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.437665, -1.11952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.374409, -1.11952)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar8"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar8"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("7_3ru8l")
 
@@ -811,7 +849,7 @@ surface_material_override/0 = ExtResource("7_3ru8l")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar8"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -821,7 +859,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar8"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -830,7 +868,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar8"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -840,7 +878,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar8"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -849,10 +887,11 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="ObstacleCar6" type="VehicleBody3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.437665, 18.3121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77019, 0.374409, 18.3121)
 mass = 50.0
+script = ExtResource("9_8e11u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/ObstacleCar6"]
+[node name="CarMesh" type="MeshInstance3D" parent="Node3D/ObstacleCar6"]
 mesh = ExtResource("2_8sdff")
 surface_material_override/0 = ExtResource("3_71h60")
 
@@ -860,7 +899,7 @@ surface_material_override/0 = ExtResource("3_71h60")
 shape = SubResource("ConvexPolygonShape3D_ppx43")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar6"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -870,7 +909,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar6"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, -1.44559)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, -1.44559)
 use_as_steering = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -879,7 +918,7 @@ wheel_radius = 0.35
 mesh = ExtResource("3_mfi84")
 
 [node name="BackLeftWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar6"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -889,7 +928,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = ExtResource("3_mfi84")
 
 [node name="BackRightWheel" type="VehicleWheel3D" parent="Node3D/ObstacleCar6"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0.0619926, 0.878332)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.9, 0.0619926, 0.878332)
 use_as_traction = true
 wheel_roll_influence = 0.01
 wheel_radius = 0.35
@@ -901,8 +940,20 @@ mesh = ExtResource("3_mfi84")
 transform = Transform3D(0.64679, -0.584238, -0.490234, 0, -0.642788, 0.766045, -0.762668, -0.49547, -0.415749, 0, 14.7175, 0)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
+[node name="CameraTop" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 83.5904, 0.40893)
+environment = SubResource("Environment_j1s37")
+fov = 30.0
+size = 18.619
+
+[node name="CameraBent" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.325205, 0.945644, 0, -0.945644, 0.325205, 0, 67.3404, 26.0435)
+environment = SubResource("Environment_j1s37")
+fov = 30.0
+size = 18.619
+
+[node name="CameraSide" type="Camera3D" parent="Node3D"]
+transform = Transform3D(0.587291, -0.699665, 0.406888, 0, 0.502718, 0.86445, -0.809376, -0.507684, 0.295242, 17.1538, 36.4632, 16.2932)
 environment = SubResource("Environment_j1s37")
 fov = 30.0
 size = 18.619
