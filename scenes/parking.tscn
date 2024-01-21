@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3umccqlkc12c"]
+[gd_scene load_steps=35 format=3 uid="uid://c3umccqlkc12c"]
 
 [ext_resource type="Script" path="res://scripts/car.gd" id="1_hpxx8"]
 [ext_resource type="ArrayMesh" uid="uid://bqao2y3peoq04" path="res://models/car_body.res" id="2_8sdff"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://2y403fqonr8o" path="res://sounds/crash.wav" id="7_gsd1l"]
 [ext_resource type="Material" uid="uid://bkf0opy2wabat" path="res://materials/car_body_white.tres" id="7_vgy7r"]
 [ext_resource type="AudioStream" uid="uid://bvo5go71hg5ik" path="res://sounds/engine.wav" id="8_nh84a"]
+[ext_resource type="Environment" uid="uid://brcgxj6ql000p" path="res://materials/environment.tres" id="9_7akfx"]
 [ext_resource type="Script" path="res://scripts/obstacle_car.gd" id="9_8e11u"]
 [ext_resource type="Material" uid="uid://bls1bws84mcbr" path="res://materials/wheel_metal.tres" id="12_miivj"]
 [ext_resource type="Material" uid="uid://dj7nv8b1mx1lv" path="res://materials/car_body_tan.tres" id="12_tormo"]
@@ -97,20 +98,6 @@ data = PackedVector3Array(-1.5, 0.25, 2.5, 1.5, 0.25, 2.5, -1.5, -0.25, 2.5, 1.5
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ppx43"]
 points = PackedVector3Array(0.965434, 0.121574, -2.01977, 0.932358, 0.556089, -1.86685, 0.932358, 0.634299, -1.1173, 0.932358, 0.639683, -0.636438, 0.932358, 0.639683, 0.714095, 0.932358, 0.634299, 1.0219, 0.95296, 0.125196, 1.4755, 0.95296, 2.23517e-08, 1.47945, 0.965434, 2.23517e-08, -2.04308, 0.835021, 0.13332, -2.22721, 0.812529, 0.609828, -2.0984, 0.746945, 1, -0.56176, 0.746945, 1, 0.628353, 0.932358, 0.572631, 1.3862, 0.812529, 0.62637, 1.56401, 0.826516, 0.136942, 1.59483, 0.826516, 2.23517e-08, 1.58218, 0.835021, 2.23517e-08, -2.2438, 0.467786, 0.13332, -2.34574, 0.474779, 0.609828, -2.21693, 0.474779, 1, -0.632882, 0.474779, 1, 0.708959, 0.474779, 0.62637, 1.64382, 0.470432, 0.136942, 1.67464, 0.470432, 2.23517e-08, 1.662, 0.467786, 2.23517e-08, -2.36194, -0.467975, 0.13332, -2.34574, -0.474968, 0.609828, -2.21693, -0.474968, 1, -0.632882, -0.474968, 1, 0.708959, -0.474968, 0.62637, 1.64382, -0.470621, 0.136942, 1.67464, -0.470621, 2.23517e-08, 1.662, -0.467975, 2.23517e-08, -2.36194, -0.83521, 2.23517e-08, -2.2438, -0.83521, 0.13332, -2.22721, -0.812719, 0.609828, -2.0984, -0.747134, 1, -0.56176, -0.747134, 1, 0.628353, -0.812719, 0.62637, 1.56401, -0.826705, 0.136942, 1.59483, -0.826705, 2.23517e-08, 1.58218, -0.965434, 2.23517e-08, -2.04308, -0.965434, 0.121574, -2.01977, -0.932547, 0.556089, -1.86685, -0.932547, 0.634299, -1.1173, -0.932547, 0.639683, -0.636438, -0.932547, 0.639683, 0.714095, -0.932547, 0.634299, 1.0219, -0.932547, 0.572631, 1.3862, -0.953149, 0.125196, 1.4755, -0.953149, 2.23517e-08, 1.47945)
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bt6dq"]
-sky_energy_multiplier = 2.0
-ground_bottom_color = Color(0.211765, 0.509804, 0.403922, 1)
-ground_horizon_color = Color(0.294118, 0.341176, 0.4, 1)
-
-[sub_resource type="Sky" id="Sky_y0orv"]
-sky_material = SubResource("ProceduralSkyMaterial_bt6dq")
-
-[sub_resource type="Environment" id="Environment_j1s37"]
-sky = SubResource("Sky_y0orv")
-ambient_light_source = 3
-ambient_light_color = Color(0.298039, 0.301961, 0.301961, 1)
-ambient_light_energy = 6.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_aovb8"]
 size = Vector3(1, 2, 75)
@@ -314,13 +301,13 @@ autoplay = true
 
 [node name="CameraCar" type="Camera3D" parent="Node3D/PlayerCar"]
 transform = Transform3D(1, 0, 0, 0, 0.694796, 0.719207, 0, -0.719207, 0.694796, 0, 10.0166, 9.62604)
-environment = SubResource("Environment_j1s37")
+environment = ExtResource("9_7akfx")
 fov = 30.0
 size = 18.619
 
 [node name="CameraCar2" type="Camera3D" parent="Node3D/PlayerCar"]
 transform = Transform3D(1, 0, 0, 0, 0.998581, -0.0532597, 0, 0.0532597, 0.998581, -0.389893, 0.881032, -0.216264)
-environment = SubResource("Environment_j1s37")
+environment = ExtResource("9_7akfx")
 fov = 30.0
 size = 18.619
 
@@ -942,19 +929,19 @@ shadow_enabled = true
 
 [node name="CameraTop" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 83.5904, 0.40893)
-environment = SubResource("Environment_j1s37")
+environment = ExtResource("9_7akfx")
 fov = 30.0
 size = 18.619
 
 [node name="CameraBent" type="Camera3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.325205, 0.945644, 0, -0.945644, 0.325205, 0, 67.3404, 26.0435)
-environment = SubResource("Environment_j1s37")
+environment = ExtResource("9_7akfx")
 fov = 30.0
 size = 18.619
 
 [node name="CameraSide" type="Camera3D" parent="Node3D"]
 transform = Transform3D(0.587291, -0.699665, 0.406888, 0, 0.502718, 0.86445, -0.809376, -0.507684, 0.295242, 17.1538, 36.4632, 16.2932)
-environment = SubResource("Environment_j1s37")
+environment = ExtResource("9_7akfx")
 fov = 30.0
 size = 18.619
 
