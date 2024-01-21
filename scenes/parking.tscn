@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c3umccqlkc12c"]
+[gd_scene load_steps=34 format=3 uid="uid://c3umccqlkc12c"]
 
 [ext_resource type="Script" path="res://scripts/car.gd" id="1_hpxx8"]
 [ext_resource type="ArrayMesh" uid="uid://bqao2y3peoq04" path="res://models/car_body.res" id="2_8sdff"]
@@ -18,46 +18,7 @@
 [ext_resource type="Material" uid="uid://bls1bws84mcbr" path="res://materials/wheel_metal.tres" id="12_miivj"]
 [ext_resource type="Material" uid="uid://dj7nv8b1mx1lv" path="res://materials/car_body_tan.tres" id="12_tormo"]
 
-[sub_resource type="FontFile" id="FontFile_lxup0"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/70/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/120/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/100/0 = Vector2(0, 0)
-cache/0/70/0/ascent = 0.0
-cache/0/70/0/descent = 0.0
-cache/0/70/0/underline_position = 0.0
-cache/0/70/0/underline_thickness = 0.0
-cache/0/70/0/scale = 1.0
-cache/0/70/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/70/0/kerning_overrides/70/0 = Vector2(0, 0)
-cache/0/70/0/kerning_overrides/120/0 = Vector2(0, 0)
-cache/0/70/0/kerning_overrides/100/0 = Vector2(0, 0)
-cache/0/120/0/ascent = 0.0
-cache/0/120/0/descent = 0.0
-cache/0/120/0/underline_position = 0.0
-cache/0/120/0/underline_thickness = 0.0
-cache/0/120/0/scale = 1.0
-cache/0/120/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/120/0/kerning_overrides/70/0 = Vector2(0, 0)
-cache/0/120/0/kerning_overrides/120/0 = Vector2(0, 0)
-cache/0/120/0/kerning_overrides/100/0 = Vector2(0, 0)
-cache/0/100/0/ascent = 0.0
-cache/0/100/0/descent = 0.0
-cache/0/100/0/underline_position = 0.0
-cache/0/100/0/underline_thickness = 0.0
-cache/0/100/0/scale = 1.0
-cache/0/100/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/100/0/kerning_overrides/70/0 = Vector2(0, 0)
-cache/0/100/0/kerning_overrides/120/0 = Vector2(0, 0)
-cache/0/100/0/kerning_overrides/100/0 = Vector2(0, 0)
-
 [sub_resource type="LabelSettings" id="LabelSettings_3im3o"]
-font = SubResource("FontFile_lxup0")
 font_size = 100
 font_color = Color(1, 0, 0, 1)
 outline_size = 10
