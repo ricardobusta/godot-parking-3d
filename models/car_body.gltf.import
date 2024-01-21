@@ -30,6 +30,32 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
+"materials": {
+"Bumpers": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/car_bumpers.tres"
+},
+"CarBody": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/car_body.tres"
+},
+"LightFront": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/lights_front.tres"
+},
+"LightRear": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/lights_rear.tres"
+},
+"WheelRubber": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/wheel_rubber.tres"
+},
+"WindShield": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/wind_shield.tres"
+}
+},
 "meshes": {
 "car_body_Cube": {
 "generate/lightmap_uv": 0,

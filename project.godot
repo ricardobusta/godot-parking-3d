@@ -13,11 +13,27 @@ config_version=5
 config/name="Parking3D"
 run/main_scene="res://scenes/parking.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://app/icon.png"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="Parking3D"
+
+[file_customization]
+
+folder_colors={
+"res://materials/": "red",
+"res://models/": "orange",
+"res://scenes/": "blue",
+"res://scripts/": "purple",
+"res://textures/": "green"
+}
 
 [rendering]
 
